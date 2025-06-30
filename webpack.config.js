@@ -3,6 +3,9 @@ const webpack = require('webpack');
 
 const ScratchWebpackConfigBuilder = require('scratch-webpack-configuration');
 
+
+const ASSET_PATH = '/scratch-gui/';
+
 const baseConfig = new ScratchWebpackConfigBuilder(
     {
         rootPath: path.resolve(__dirname),
@@ -32,6 +35,7 @@ const webConfig = baseConfig.clone()
                 type: 'umd2'
             },
             path: path.resolve(__dirname, 'dist', 'web'),
+            publicPath: ASSET_PATH,
             clean: false
         }
     });
@@ -68,6 +72,7 @@ const nodeConfig = baseConfig.clone()
             },
             chunkFormat: 'commonjs',
             path: path.resolve(__dirname, 'dist', 'node'),
+            publicPath: ASSET_PATH,
             clean: false
         }
     })
